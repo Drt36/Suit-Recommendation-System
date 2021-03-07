@@ -62,4 +62,8 @@ def recommend_cosine(Design_codein):
     #Return the top 5 most similar books using integar-location based indexing (iloc)
     return dataset.iloc[books_index].to_dict('records')
  
+ 
+ def sample_row():
+    dataset_frame=pd.DataFrame(dataset)
+    return dataset_frame.sample(n=3).to_dict('records')
 
