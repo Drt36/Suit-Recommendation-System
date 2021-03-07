@@ -9,7 +9,7 @@ def recommend():
     result=tmswdr.recommend_cosine(request.args.get('Design_codein'))
     return jsonify(result)
 
-@app.route('/sample', methods=['GET'])
+@app.route('/sample')
 def getsample():
     result=tmswdr.sample_row()
     return jsonify(result)
