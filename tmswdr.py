@@ -64,5 +64,5 @@ def recommend_cosine(Design_codein):
  
 def sample_row():
     dataset_frame=pd.DataFrame(dataset)
-    return dataset_frame.sample(n=3).to_dict('records')
+    return dataset_frame.sample(n=4).to_dict('records')
 
