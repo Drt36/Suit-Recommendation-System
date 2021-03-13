@@ -1,11 +1,9 @@
-
 import numpy as np
 import pandas as pd
 import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import linear_kernel
-
 
 dataset = pd.read_csv("tmswdr.csv")
 dataset.head()
@@ -28,7 +26,9 @@ dataset3piecesuit.head()
 
 
 dataset.shape
+
 datasethalfsuit.shape
+
 dataset3piecesuit.shape
 
 
@@ -53,7 +53,9 @@ tfidf_all_content3piecesuit = vectorizer.fit_transform(dataset3piecesuit['all_co
 
 
 tfidf_all_content.shape
+
 tfidf_all_contenthalfsuit.shape
+
 tfidf_all_content3piecesuit.shape
 
 
