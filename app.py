@@ -9,11 +9,32 @@ def recommend():
     result=tmswdr.recommend_cosine(request.args.get('Design_codein'))
     return jsonify(result)
 
+@app.route('/recommendationhalfsuit', methods=['GET'])
+def recommend():
+    result=tmswdr.recommend_halfsuit(request.args.get('Design_codein'))
+    return jsonify(result)
+
+@app.route('/recommendation3piecesuit', methods=['GET'])
+def recommend():
+    result=tmswdr.recommend_3piecesuit(request.args.get('Design_codein'))
+    return jsonify(result)
+
+
 @app.route('/sample')
 def getsample():
     result=tmswdr.sample_row()
     return jsonify(result)
 
+@app.route('/samplehalfsuit')
+def getsample():
+    result=tmswdr.sample_halfsuit()
+    return jsonify(result)
+
+@app.route('/sample3piecesuit')
+def getsample():
+    result=tmswdr.sample_3piecesuit()
+    return jsonify(result)
+    
 @app.route('/')
 def test():
     return "Hurray!, Recommendation System is Working..."
