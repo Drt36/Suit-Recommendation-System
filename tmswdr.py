@@ -242,34 +242,12 @@ def recommend_3piecesuit(Design_codein):
     return dataset3piecesuit.iloc[designs_index].to_dict('records')
 
 
-# In[42]:
-
-
-
-
-
-# In[43]:
-
-
-
-
-
-# In[45]:
-
-
-
-
-
 # In[51]:
 
 
 def sample_row():
     dataset_frame=pd.DataFrame(dataset)
     return dataset_frame.sample(n=4).to_dict('records')
-
-
-# In[52]:
-
 
 
 
@@ -282,11 +260,6 @@ def sample_halfsuit():
     return dataset_frame.sample(n=4).to_dict('records')
 
 
-# In[48]:
-
-
-
-
 
 # In[49]:
 
@@ -294,10 +267,4 @@ def sample_halfsuit():
 def sample_3piecesuit():
     dataset_frame=pd.DataFrame(dataset3piecesuit)
     return dataset_frame.sample(n=4).to_dict('records')
-
-
-# In[50]:
-
-
-
-
+   
