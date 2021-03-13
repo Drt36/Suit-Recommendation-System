@@ -10,12 +10,12 @@ def recommend():
     return jsonify(result)
 
 @app.route('/recommendationhalfsuit', methods=['GET'])
-def recommend():
+def recommendhalfsuit():
     result=tmswdr.recommend_halfsuit(request.args.get('Design_codein'))
     return jsonify(result)
 
 @app.route('/recommendation3piecesuit', methods=['GET'])
-def recommend():
+def recommend3piecesuit():
     result=tmswdr.recommend_3piecesuit(request.args.get('Design_codein'))
     return jsonify(result)
 
@@ -26,15 +26,15 @@ def getsample():
     return jsonify(result)
 
 @app.route('/samplehalfsuit')
-def getsample():
+def getsamplehalfsuit():
     result=tmswdr.sample_halfsuit()
     return jsonify(result)
 
 @app.route('/sample3piecesuit')
-def getsample():
+def getsample3piecesuit():
     result=tmswdr.sample_3piecesuit()
     return jsonify(result)
-    
+
 @app.route('/')
 def test():
     return "Hurray!, Recommendation System is Working..."
