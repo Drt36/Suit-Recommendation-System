@@ -263,7 +263,7 @@ def recommend_3piecesuit(Design_codein):
 # In[51]:
 
 
-def random_row():
+def sample_row():
     dataset_frame=pd.DataFrame(dataset)
     return dataset_frame.sample(n=4).to_dict('records')
 
