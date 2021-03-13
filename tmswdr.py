@@ -245,19 +245,19 @@ def recommend_3piecesuit(Design_codein):
 # In[42]:
 
 
-recommend_cosine(3)
+
 
 
 # In[43]:
 
 
-recommend_halfsuit(1)
+
 
 
 # In[45]:
 
 
-recommend_3piecesuit(1)
+
 
 
 # In[51]:
@@ -271,7 +271,7 @@ def random_row():
 # In[52]:
 
 
-random_row()
+
 
 
 # In[47]:
@@ -285,7 +285,7 @@ def sample_halfsuit():
 # In[48]:
 
 
-sample_halfsuit()
+
 
 
 # In[49]:
@@ -299,5 +299,5 @@ def sample_3piecesuit():
 # In[50]:
 
 
-sample_3piecesuit()
+
 
