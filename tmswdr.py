@@ -196,7 +196,7 @@ def recommend_cosine(Design_code):
     # sorting them and getting top 5
     similarity_scores = list(enumerate(cosine_similarity_all_content[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
-    similarity_scores = similarity_scores[1:6]
+    similarity_scores = similarity_scores[1:9]
     
     #Get the books index
     books_index = [i[0] for i in similarity_scores]
