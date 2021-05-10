@@ -193,16 +193,16 @@ def recommend_suit(Design_codein):
     id = inddictsuit[Design_codein]
     
     # Get the pairwise similarity scores of all designs compared that design,
-    # sorting them and getting top 5
+    # sorting them and getting top 8
     similarity_scores = list(enumerate(cosine_similarity_all_contentsuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
-    similarity_scores = similarity_scores[1:6]
+    similarity_scores = similarity_scores[1:9]
     
     #Get the designs index
     design_index = [i[0] for i in similarity_scores]
     print(similarity_scores)
     
-    #Return the top 5 most similar designs
+    #Return the top 8 most similar designs
     return datasetsuit.iloc[design_index].to_dict('records')
 
 
@@ -214,7 +214,7 @@ def recommend_halfsuit(Design_codein):
     id = inddicthalfsuit[Design_codein]
     
     # Get the pairwise similarity scores of all designs compared that design,
-    # sorting them and getting top 5
+    # sorting them and getting top 8
     similarity_scores = list(enumerate(cosine_similarity_all_contenthalfsuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     similarity_scores = similarity_scores[1:9]
@@ -222,7 +222,7 @@ def recommend_halfsuit(Design_codein):
     #Get the designs index
     designs_index = [i[0] for i in similarity_scores]
     
-    #Return the top 5 most similar designs
+    #Return the top 8 most similar designs
     return datasethalfsuit.iloc[designs_index].to_dict('records')
 
 
@@ -234,14 +234,14 @@ def recommend_3piecesuit(Design_codein):
     id = inddict3piecesuit[Design_codein]
     
     # Get the pairwise similarity scores of all designs compared that design,
-    # sorting them and getting top 5
+    # sorting them and getting top 8
     similarity_scores = list(enumerate(cosine_similarity_all_content3piecesuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     similarity_scores = similarity_scores[1:9]
     
     #Get the designs index
     designs_index = [i[0] for i in similarity_scores]
-    #Return the top 5 most similar designs
+    #Return the top 8 most similar designs
     return dataset3piecesuit.iloc[designs_index].to_dict('records')
 
 
