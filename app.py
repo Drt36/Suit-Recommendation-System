@@ -4,9 +4,9 @@ import tmswdr
 app = Flask(__name__)
 CORS(app) 
         
-@app.route('/recommendation', methods=['GET'])
-def recommend():
-    result=tmswdr.recommend_cosine(request.args.get('Design_codein'))
+@app.route('/recommendationsuit', methods=['GET'])
+def recommendsuit():
+    result=tmswdr.recommend_suit(request.args.get('Design_codein'))
     return jsonify(result)
 
 @app.route('/recommendationhalfsuit', methods=['GET'])
@@ -20,9 +20,9 @@ def recommend3piecesuit():
     return jsonify(result)
 
 
-@app.route('/sample')
-def getsample():
-    result=tmswdr.sample_row()
+@app.route('/samplesuit')
+def getsamplesuit():
+    result=tmswdr.sample_suit()
     return jsonify(result)
 
 @app.route('/samplehalfsuit')

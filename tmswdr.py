@@ -12,247 +12,272 @@ from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.metrics.pairwise import linear_kernel
 
 
-# In[18]:
+# In[2]:
 
 
-dataset = pd.read_csv("tmswdr.csv")
-dataset.head()
+datasetsuit = pd.read_csv("tmswdrsuit.csv")
+datasetsuit.head()
 
 
-# In[19]:
+# In[3]:
 
 
 datasethalfsuit = pd.read_csv("tmswdrhalfsuit.csv")
 datasethalfsuit.head()
 
 
-# In[20]:
+# In[4]:
 
 
 dataset3piecesuit = pd.read_csv("tmswdr3piecesuit.csv")
 dataset3piecesuit.head()
 
 
-# In[3]:
+# In[5]:
 
 
-dataset.drop(["Design_url2"],axis=1,inplace=True)
+datasetsuit.drop(["Design_url2"],axis=1,inplace=True)
 
 
-# In[4]:
+# In[6]:
 
 
-dataset.head()
+datasetsuit.head()
 
 
-# In[21]:
+# In[7]:
 
 
 datasethalfsuit.drop(["Design_url2"],axis=1,inplace=True)
 datasethalfsuit.head()
 
 
-# In[22]:
+# In[8]:
 
 
 dataset3piecesuit.drop(["Design_url2"],axis=1,inplace=True)
 dataset3piecesuit.head()
 
 
-# In[5]:
-
-
-dataset.shape
-
-
-# In[23]:
-
-
-datasethalfsuit.shape
-
-
-# In[24]:
-
-
-dataset3piecesuit.shape
-
-
-# In[6]:
-
-
-dataset['all_content'] =dataset['Design_title'] + dataset['Design_Color'] + dataset['Design_Style']
-
-
-# In[25]:
-
-
-datasethalfsuit['all_content'] =datasethalfsuit['Design_title'] + datasethalfsuit['Design_Color'] + datasethalfsuit['Design_Style']
-
-
-# In[26]:
-
-
-dataset3piecesuit['all_content'] =dataset3piecesuit['Design_title'] + dataset3piecesuit['Design_Color'] + dataset3piecesuit['Design_Style']
-
-
-# In[27]:
-
-
-vectorizer = TfidfVectorizer(analyzer='word')
-
-
-# In[8]:
-
-
-tfidf_all_content = vectorizer.fit_transform(dataset['all_content'])
-
-
-# In[28]:
-
-
-tfidf_all_contenthalfsuit = vectorizer.fit_transform(datasethalfsuit['all_content'])
-
-
-# In[29]:
-
-
-tfidf_all_content3piecesuit = vectorizer.fit_transform(dataset3piecesuit['all_content'])
-
-
 # In[9]:
 
 
-tfidf_all_content.shape
-
-
-# In[30]:
-
-
-tfidf_all_contenthalfsuit.shape
-
-
-# In[31]:
-
-
-tfidf_all_content3piecesuit.shape
+datasetsuit.shape
 
 
 # In[10]:
 
 
-cosine_similarity_all_content = linear_kernel(tfidf_all_content, tfidf_all_content)
+datasethalfsuit.shape
 
 
-# In[32]:
+# In[11]:
+
+
+dataset3piecesuit.shape
+
+
+# In[12]:
+
+
+datasetsuit['all_content'] =datasetsuit['Design_title'] + datasetsuit['Design_Color'] + datasetsuit['Design_Style']
+
+
+# In[13]:
+
+
+datasethalfsuit['all_content'] =datasethalfsuit['Design_title'] + datasethalfsuit['Design_Color'] + datasethalfsuit['Design_Style']
+
+
+# In[14]:
+
+
+dataset3piecesuit['all_content'] =dataset3piecesuit['Design_title'] + dataset3piecesuit['Design_Color'] + dataset3piecesuit['Design_Style']
+
+
+# In[15]:
+
+
+vectorizer = TfidfVectorizer(analyzer='word')
+
+
+# In[16]:
+
+
+tfidf_all_contentsuit = vectorizer.fit_transform(datasetsuit['all_content'])
+
+
+# In[17]:
+
+
+tfidf_all_contenthalfsuit = vectorizer.fit_transform(datasethalfsuit['all_content'])
+
+
+# In[18]:
+
+
+tfidf_all_content3piecesuit = vectorizer.fit_transform(dataset3piecesuit['all_content'])
+
+
+# In[19]:
+
+
+tfidf_all_contentsuit.shape
+
+
+# In[20]:
+
+
+tfidf_all_contenthalfsuit.shape
+
+
+# In[21]:
+
+
+tfidf_all_content3piecesuit.shape
+
+
+# In[22]:
+
+
+cosine_similarity_all_contentsuit = linear_kernel(tfidf_all_contentsuit, tfidf_all_contentsuit)
+
+
+# In[23]:
 
 
 cosine_similarity_all_contenthalfsuit = linear_kernel(tfidf_all_contenthalfsuit, tfidf_all_contenthalfsuit)
 
 
-# In[33]:
+# In[24]:
 
 
 cosine_similarity_all_content3piecesuit = linear_kernel(tfidf_all_content3piecesuit, tfidf_all_content3piecesuit)
 
 
-# In[34]:
+# In[25]:
 
 
-indices_n = pd.Series(dataset['Design_code'])
+indices_nsuit = pd.Series(datasetsuit['Design_code'])
 
 indices_nhalfsuit = pd.Series(datasethalfsuit['Design_code'])
 
 indices_n3piecesuit = pd.Series(dataset3piecesuit['Design_code'])
 
 
-# In[36]:
+# In[26]:
 
 
-inddict = indices_n.to_dict()
+inddictsuit = indices_nsuit.to_dict()
 
 inddicthalfsuit = indices_nhalfsuit.to_dict()
 
 inddict3piecesuit = indices_n3piecesuit.to_dict()
 
 
-# In[39]:
+# In[27]:
 
 
-inddict = dict((v,k) for k,v in inddict.items())
+inddictsuit = dict((v,k) for k,v in inddictsuit.items())
 
 inddicthalfsuit = dict((v,k) for k,v in inddicthalfsuit.items())
 
 inddict3piecesuit = dict((v,k) for k,v in inddict3piecesuit.items())
 
 
-# In[14]:
+# In[28]:
 
 
-def recommend_cosine(Design_code):
-    Design_code=int(Design_code)
+def recommend_suit(Design_codein):
+    Design_codein=int(Design_codein)
+    id = inddictsuit[Design_codein]
     
-    id = inddict[Design_code]
-    # Get the pairwise similarity scores of all books compared that book,
+    # Get the pairwise similarity scores of all designs compared that design,
     # sorting them and getting top 5
-    similarity_scores = list(enumerate(cosine_similarity_all_content[id]))
+    similarity_scores = list(enumerate(cosine_similarity_all_contentsuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
-    similarity_scores = similarity_scores[1:9]
+    similarity_scores = similarity_scores[1:6]
     
-    #Get the books index
-    books_index = [i[0] for i in similarity_scores]
+    #Get the designs index
+    design_index = [i[0] for i in similarity_scores]
     print(similarity_scores)
-    #Return the top 5 most similar books using integar-location based indexing (iloc)
-    return dataset.iloc[books_index].to_dict('records')
-    #return dataset.to_dict('books_index')
+    
+    #Return the top 5 most similar designs
+    return datasetsuit.iloc[design_index].to_dict('records')
 
 
-# In[40]:
+# In[29]:
 
 
 def recommend_halfsuit(Design_codein):
     Design_codein=int(Design_codein)
     id = inddicthalfsuit[Design_codein]
-    # Get the pairwise similarity scores of all books compared that book,
-    # sorting them and getting top 
+    
+    # Get the pairwise similarity scores of all designs compared that design,
+    # sorting them and getting top 5
     similarity_scores = list(enumerate(cosine_similarity_all_contenthalfsuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     similarity_scores = similarity_scores[1:9]
     
     #Get the designs index
     designs_index = [i[0] for i in similarity_scores]
-    #Return the top 5 most similar books using integar-location based indexing (iloc)
+    
+    #Return the top 5 most similar designs
     return datasethalfsuit.iloc[designs_index].to_dict('records')
 
 
-# In[41]:
+# In[30]:
 
 
 def recommend_3piecesuit(Design_codein):
     Design_codein=int(Design_codein)
     id = inddict3piecesuit[Design_codein]
-    # Get the pairwise similarity scores of all books compared that book,
-    # sorting them and getting top 8
+    
+    # Get the pairwise similarity scores of all designs compared that design,
+    # sorting them and getting top 5
     similarity_scores = list(enumerate(cosine_similarity_all_content3piecesuit[id]))
     similarity_scores = sorted(similarity_scores, key=lambda x: x[1], reverse=True)
     similarity_scores = similarity_scores[1:9]
     
     #Get the designs index
     designs_index = [i[0] for i in similarity_scores]
-    #Return the top 5 most similar books using integar-location based indexing (iloc)
+    #Return the top 5 most similar designs
     return dataset3piecesuit.iloc[designs_index].to_dict('records')
 
 
-# In[51]:
+# In[31]:
 
 
-def sample_row():
-    dataset_frame=pd.DataFrame(dataset)
+recommend_suit(3)
+
+
+# In[32]:
+
+
+recommend_halfsuit(1)
+
+
+# In[33]:
+
+
+recommend_3piecesuit(1)
+
+
+# In[34]:
+
+
+def sample_suit():
+    dataset_frame=pd.DataFrame(datasetsuit)
     return dataset_frame.sample(n=4).to_dict('records')
 
 
+# In[35]:
 
 
-# In[47]:
+sample_suit()
+
+
+# In[36]:
 
 
 def sample_halfsuit():
@@ -260,11 +285,22 @@ def sample_halfsuit():
     return dataset_frame.sample(n=4).to_dict('records')
 
 
+# In[37]:
 
-# In[49]:
+
+sample_halfsuit()
+
+
+# In[38]:
 
 
 def sample_3piecesuit():
     dataset_frame=pd.DataFrame(dataset3piecesuit)
     return dataset_frame.sample(n=4).to_dict('records')
-   
+
+
+# In[39]:
+
+
+sample_3piecesuit()
+
