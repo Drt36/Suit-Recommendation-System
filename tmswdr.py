@@ -268,7 +268,7 @@ recommend_3piecesuit(1)
 
 def sample_suit():
     dataset_frame=pd.DataFrame(datasetsuit)
-    return dataset_frame.sample(n=4).to_dict('records')
+    return dataset_frame.sample(n=6).to_dict('records')
 
 
 # In[35]:
